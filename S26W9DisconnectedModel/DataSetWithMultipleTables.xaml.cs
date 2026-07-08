@@ -39,8 +39,8 @@ namespace S26W9DisconnectedModel
             ds.Tables[0].TableName = "Categories";
             ds.Tables[1].TableName = "Products";
 
-            grdCategories.ItemsSource = ds.Tables[0].DefaultView;
-            grdProducts.ItemsSource = ds.Tables[1].DefaultView;
+            grdCategories.ItemsSource = ds.Tables["Categories"]!.DefaultView;
+            grdProducts.ItemsSource = ds.Tables["Products"]!.DefaultView;
         }
     }
 }
