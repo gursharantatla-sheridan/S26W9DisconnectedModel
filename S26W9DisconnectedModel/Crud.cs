@@ -1,0 +1,50 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Data;
+using Microsoft.Data.SqlClient;
+
+namespace S26W9DisconnectedModel
+{
+    public class Crud
+    {
+        //fields - class level variables
+        private SqlConnection _conn;
+        private SqlDataAdapter _adp;
+        private SqlCommandBuilder _cmdBuilder;
+        private DataSet _ds;
+        private DataTable _tbl;
+
+        public Crud()
+        {
+            _conn = new SqlConnection(Data.GetConnectionString());
+            _ds = new DataSet();
+
+            InitProducts();
+        }
+
+        private void InitProducts()
+        {
+            string query = "select ProductID, ProductName, UnitPrice, UnitsInStock from Products";
+            _adp = new SqlDataAdapter(query, _conn);
+
+            _adp.Fill(_ds, "Products");
+            _tbl = _ds.Tables["Products"]!;
+
+            // define the primary key
+
+        }
+
+        public DataTable GetAllProducts()
+        {
+            InitProducts();
+            return _tbl;
+        }
+
+        public DataRow? GetProductById(int id)
+        {
+            var row = _tbl.Rows.Find(id);
+            return row;
+        }
+    }
+}
