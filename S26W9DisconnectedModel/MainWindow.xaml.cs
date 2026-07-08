@@ -27,5 +27,11 @@ namespace S26W9DisconnectedModel
         {
             grdProducts.ItemsSource = data.GetAllProducts().DefaultView;
         }
+
+        private void btnShowWindow2_Click(object sender, RoutedEventArgs e)
+        {
+            DataSetWithMultipleTables win2 = new DataSetWithMultipleTables();
+            win2.Show();
+        }
     }
 }
