@@ -62,6 +62,7 @@ namespace S26W9DisconnectedModel
 
             crud.InsertProduct(name, price, quantity);
 
+            grdProducts.ItemsSource = null;
             grdProducts.ItemsSource = crud.GetAllProducts().DefaultView;
             MessageBox.Show("New product added");
         }
