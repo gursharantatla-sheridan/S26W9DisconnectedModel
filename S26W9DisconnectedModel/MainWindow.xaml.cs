@@ -49,6 +49,7 @@ namespace S26W9DisconnectedModel
             }
             else
             {
+                txtName.Text = txtPrice.Text = txtQuantity.Text = "";
                 MessageBox.Show("Invalid ID. Please try again");
             }
         }
