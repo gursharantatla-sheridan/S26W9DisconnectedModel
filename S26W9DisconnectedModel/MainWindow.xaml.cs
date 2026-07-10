@@ -22,6 +22,14 @@ namespace S26W9DisconnectedModel
         public MainWindow()
         {
             InitializeComponent();
+            LoadCategoriesInCombobox();
+        }
+
+        private void LoadCategoriesInCombobox()
+        {
+            cmbCategories.ItemsSource = crud.GetCategories().DefaultView;
+            cmbCategories.DisplayMemberPath = "CategoryName";
+            cmbCategories.SelectedValuePath = "CategoryID";
         }
 
         private void btnLoadAllProducts_Click(object sender, RoutedEventArgs e)
