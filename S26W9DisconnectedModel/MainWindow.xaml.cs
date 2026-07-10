@@ -104,5 +104,11 @@ namespace S26W9DisconnectedModel
         {
             grdProducts.ItemsSource = crud.GetProductsByName(txtName.Text).DefaultView;
         }
+
+        private void cmbCategories_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int catId = (int)cmbCategories.SelectedValue;
+            grdProducts.ItemsSource = crud.GetProductsByCategory(catId).DefaultView;
+        }
     }
 }
